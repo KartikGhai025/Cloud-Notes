@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
               codeAutoRetrievalTimeout: (verificationId) async {},
             );
           },
-          color: Colors.blue,
+          color: Colors.green,
           textColor: Colors.white,
           child: Text("SEND"),
         ),
