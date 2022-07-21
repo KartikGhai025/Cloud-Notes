@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/addNote.dart';
 import 'package:notes_app/editnote.dart';
 import 'package:notes_app/otpscreen.dart';
+import 'package:notes_app/viewNote.dart';
+
+
+List <Color> colors= [
+  Colors.red,
+  Colors.blue,
+  Colors.teal,
+  Colors.yellow
+];
 
 class NoteStreamData extends StatefulWidget {
   const NoteStreamData({Key? key}) : super(key: key);
@@ -21,7 +30,7 @@ class _BuilderPropertyPage extends State<NoteStreamData> {
 
   @override
   Widget build(BuildContext context) {
-print(FirebaseAuth.instance.currentUser!.uid);
+//print(FirebaseAuth.instance.currentUser!.uid);
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -30,14 +39,14 @@ print(FirebaseAuth.instance.currentUser!.uid);
                  await FirebaseAuth.instance.signOut();
                 Navigator.popAndPushNamed(context, 'home');
               }),
-          title: const Text('Note App'),
+          title: const Text('My Notes'),
           actions: [
             MaterialButton(
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AddNote()));
               },
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.add, color: Colors.white,),
             )
           ]),
       body: Padding(
@@ -70,13 +79,18 @@ print(FirebaseAuth.instance.currentUser!.uid);
                       padding: const EdgeInsets.all(8.0),
                       child: Stack(
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(15)),
-                              child:  Center(
-                                  child: Text(' ${data['note'].toString().substring(0,5)}',
-                              ))),
+                          GestureDetector(
+                            onTap: (){
+                              showNote(data['note'].toString(), context);
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child:  Center(
+                                    child: Text(' ${data['note'].toString().substring(0,20)}...',
+                                ))),
+                          ),
                           Positioned(
                             bottom: -10,
                             left: 105,

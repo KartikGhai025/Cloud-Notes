@@ -35,7 +35,7 @@ class _AddNoteState extends State<AddNote> {
               ),
               TextButton(
                 onPressed: () async {
-                  print(_noteController.text);
+              //    print(_noteController.text);
 
 
                   FirebaseFirestore.instance

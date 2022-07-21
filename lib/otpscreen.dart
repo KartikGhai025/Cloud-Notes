@@ -64,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
       children: [
         Spacer(),
         TextField(
+          keyboardType: TextInputType.phone,
           controller: phoneController,
           decoration: const InputDecoration(
             hintText: "Phone Number",
